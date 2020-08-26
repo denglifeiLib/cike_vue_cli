@@ -163,6 +163,7 @@ export default({
                 return;
             }
             this.popupVisible = false;
+            console.log('popcalender_com', item.value)
             this.$emit('input', item.value)
         },
         close() {

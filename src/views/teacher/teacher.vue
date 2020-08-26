@@ -74,7 +74,9 @@ export default {
     },
     created() {
         this.$emit('showClasstip')
-
+        this.$emit('tabbar', {
+            show: false
+        })
     },
     methods: {
         changeType(type) {

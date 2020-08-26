@@ -65,7 +65,7 @@ export default({
             this.dayInfos[0].week = '今日';
         },
         choose(item) {
-            console.log(99, item.value)
+            console.log('week_com', item.value)
             this.$emit('input', item.value)
         }
     }

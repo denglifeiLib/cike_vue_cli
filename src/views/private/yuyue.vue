@@ -39,13 +39,19 @@
             <div class="agreement flex_box">
                 <myRadio class="hd" v-model="isAgree"></myRadio>
                 <p class="bd agree">同意服务规则及协议</p>
-                <button class="btn red">
+                <button class="btn red" @click="goYuyue()">
                     <span>提交订单</span>
                     <img src="../../assets/images/icon_right_w@2x.png" alt="" class="right_arr ft">
                 </button>
             </div>
          </div>
 
+        <PopBindPhone 
+            :popupVisible="bindPhonePop" 
+            :form="form"
+            @submit="submit()"
+            @cancel="bindPhonePop=false"
+            @skip="bindPhonePop=false"> </PopBindPhone>  
     </div>
 </template>
 
@@ -55,6 +61,8 @@ import Weeks from '@/components/Weeks';
 import Calender from '@/components/Calender';
 import PopCalender from '@/components/PopCalender';
 import TimePicker from '@/components/TimePicker';
+import PopBindPhone from '@/components/PopBindPhone';
+import { MessageBox } from 'mint-ui';
 import Radio from '@/components/Radio';
 export default {
     name: 'test',
@@ -79,20 +87,43 @@ export default {
                 isNew: true,
                 price: 100.00
             },
-            isAgree: false
+            isAgree: false,
+            form: {
+                phone: '2222',
+                code: '3333'
+            },
+            bindPhonePop:false,
         }
     },
     created() {
         this.$emit('showClasstip')
-
+        this.$emit('tabbar', {
+            show: false
+        })
     },
     methods: {
         changeType(type) {
             this.resetTipe = type === 'open' ? 'normal' : 'open';
             console.log('changeType----', type)
+        },
+        goYuyue() {
+           if( Math.random() >0.5) {
+                this.yuyueAction()
+           } else {
+               this.bindPhonePop = true;
+           }
+        },
+        yuyueAction() {
+            // MessageBox.confirm('确定执行此操作?').then(action => {
+            //     this.$router.push('yuyue_success')
+            // });
+            this.$router.push('yuyue_success')
+        },
+        submit() {
+            this.yuyueAction()
         }
     },
-    components: {Weeks, Calender, PopCalender, TimePicker, myRadio: Radio}
+    components: {Weeks, Calender, PopCalender, TimePicker, myRadio: Radio, PopBindPhone}
 }
 </script>
 

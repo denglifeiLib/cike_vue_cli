@@ -48,6 +48,9 @@ export default {
             title: '首页',
             back: '0'
         });
+        this.$emit('tabbar', {
+            show: false
+        })
 
     },
     methods: {

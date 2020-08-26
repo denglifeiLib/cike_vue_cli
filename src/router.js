@@ -41,6 +41,10 @@ export default new Router({
             name: 'yuyue',
             component: () => import('./views/private/yuyue.vue')
         },{
+            path: '/yuyue_success', //用户端-预约成功
+            name: 'yuyue_success',
+            component: () => import('./views/private/yuyueSuccess.vue')
+        }, {
             path: '/teacher', //用户端-立即预约详情
             name: 'teacher',
             component: () => import('./views/teacher/teacher.vue')

@@ -23,9 +23,9 @@ q:before,q:after { content:'';}
 abbr,acronym { border:0;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 
-.v-modal{
+/* .v-modal{
     display: none!important;
-}
+} */
 /*文字排版*/
 .f0{ font-size:0;}
 .f12{ font-size:12px;}

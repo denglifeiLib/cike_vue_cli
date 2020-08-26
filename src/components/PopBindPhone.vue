@@ -11,7 +11,7 @@
                     <mt-field placeholder="请输入验证码" v-model="form.code">
                         <button class="btn blue">获取验证码</button>
                     </mt-field>
-                    <button class="btn red block h42" :disabled="!form.phone && !form.code">立即预约</button>
+                    <button class="btn red block h42" :disabled="!form.phone && !form.code" @click="submit()">立即预约</button>
                 </div>
             </div>
         </div>
@@ -47,6 +47,9 @@ export default({
         }, 
         close() {
             this.$emit('cancel')
+        },
+        submit() {
+            this.$emit('submit')
         }
     }
 })
