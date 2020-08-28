@@ -84,6 +84,10 @@ export default new Router({
             path: '/order_detail',//订单详情 待付款|已购买|交易完成|交易关闭
             name: 'orderDetail',
             component: () => import('./views/my/orderDetail.vue')
+        },{
+            path: '/teacher_view_data',// 教师端-数据查看
+            name: 'teacher_view_data',
+            component: () => import('./views/teacher/viewData.vue')
         }
 
         
