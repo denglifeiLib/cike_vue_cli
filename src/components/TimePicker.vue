@@ -180,22 +180,52 @@
         handler(time, index) {
             let checkedList = [];
             let isAdd = true;
+            let existIndex = this.checkedIndex.indexOf(index);
             // 未开放, 已约满, 已生成订单 的不能选择
             if(time.disable || time.status === 'full' || time.status === 'ordered') {
                 return
             }
+
             if(this.mustContinue) {
-                isAdd = this.isContinueTimes(index, this.checkedIndex)
+                // 反选
+                if( existIndex > -1) {
+                    this.checkedIndex.splice(existIndex, 1);
+                    if(this.isContinueTimes(null, this.checkedIndex)) {
+                        checkedList = [...this.checkedList]
+                        checkedList.splice(checkedList.indexOf(time.value), 1)
+                        this.$emit('input', checkedList);
+                        return;
+                    } else {
+                        this.$emit('input', []);
+                        return;
+                    }
+                    
+                }else {
+                    isAdd = this.isContinueTimes(index, this.checkedIndex)
+                }
+                
+            } else {
+                // 反选
+                if( existIndex > -1) {
+                    this.checkedIndex.splice(existIndex, 1);
+                    checkedList = [...this.checkedList]
+                    checkedList.splice(checkedList.indexOf(time.value), 1)
+                    this.$emit('input', checkedList);
+                    return;
+                }else {
+                    // normal 和 open 不能同时选择
+                    if(this.checkedStatus && this.checkedStatus !== time.status) {
+                        isAdd = false;
+                        this.$emit('changeType', time.status)
+                    }
+                    if(!this.checkedStatus) {
+                        this.$emit('changeType', time.status)
+                    }
+                }
+                
             }
 
-            // normal 和 open 不能同时选择
-            if(this.checkedStatus && this.checkedStatus !== time.status) {
-                isAdd = false;
-                this.$emit('changeType', time.status)
-            }
-            if(!this.checkedStatus) {
-                this.$emit('changeType', time.status)
-            }
+            
             
             if(isAdd) {
                 // this.checkedIndex.push(index);
@@ -209,7 +239,7 @@
             this.$emit('input', checkedList)
         },
         isContinueTimes(index, indexArray) {
-            let array = [...indexArray, index]
+            let array = (index !== null) ?[...indexArray, index] : [...indexArray];
             let arr = array.sort((a, b) => { return a - b;})
             let sum = 0;
             for (let i = 0; i < arr.length; i++) {
