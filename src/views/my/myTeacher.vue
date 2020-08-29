@@ -42,6 +42,9 @@
                 </div>
             </div>
             <div v-if="activeTab==1">
+
+                <button class="btn white block set_price_btn" @click="showPop=true"><img src="../../assets/images/skjg@2x.png" alt="" class="set_price_icon">设置私课价格</button>
+               
                 <div class="card list" v-for="(item,i) in endList" :key="i">
                     <div class="top_info flex_box">
                         <p class="text_dis bd">上课时间<span class="time">{{item.time}}</span></p>
@@ -68,6 +71,21 @@
                 </div>
             </div>
         </div>  
+
+        <PopWrap 
+            :popupVisible="showPop" 
+            title="设置私课价格"
+            @cancel="showPop=false">
+            <div class="price_alert">
+                <div class="flex_box text_dis top_dis">
+                    <span>单时段（15分钟）</span>
+                    <span>当前价格 <span class="red">¥ 100.00</span></span>
+                </div>
+                <mt-field placeholder="请输入新的价格" type="number" v-model="price" class="input"></mt-field>
+                <button class="btn red block h42" :disabled="!price" @click="submit()">确定修改</button>
+            </div>
+        </PopWrap>  
+
     </div>
 </template>
 
@@ -77,10 +95,13 @@ import Weeks from '@/components/Weeks';
 import Tabs from '@/components/Tabs';
 import Star from '@/components/Star';
 import PopCalender from '@/components/PopCalender';
+import PopWrap from '@/components/PopWrap';
 export default {
     name: 'test',
     data() {
         return {
+            showPop: false,
+            price: '',
             ActiveDay: '2020-08-25',
             tabList: [
                 {
@@ -149,8 +170,11 @@ export default {
        changeTab(index) {
             this.activeTab = index
         },
+        submit() {
+           
+        }
     },
-    components: {Weeks, PopCalender,Tabs, Star}
+    components: {Weeks, PopCalender,Tabs, Star, PopWrap}
 }
 </script>
 
@@ -180,6 +204,15 @@ export default {
                 background:rgba(240,240,240,1);
             }
         }
+        .set_price_btn{
+            margin-bottom: 12px;
+            .set_price_icon{
+                width: 12px;
+                margin-right: 6px;
+                
+            }
+        }
+        
         .main{
             padding: 12px 16px 0;
             .nostart_list{
@@ -325,6 +358,15 @@ export default {
                         color:rgba(148,155,165,1);
                     }
                 }
+            }
+        }
+
+        .price_alert{
+            .top_dis{
+                justify-content: space-around;
+            }
+            .input{
+                margin: 16px 0 55px;
             }
         }
     }

@@ -44,7 +44,7 @@ export default {
             showTip: false,
             tabs: [
                 {
-                    name: '学习中心',
+                    name: '此课', //学习中心
                     icon: require('./assets/images/tab_icon1_s@2x.png'),
                     slectedIcon: require('./assets/images/tab_icon1_n@2x.png'),
                     path: '/learn_center'
@@ -332,5 +332,71 @@ export default {
     border:1px solid rgba(240,240,240,1);
 }
 
+.image_hover{
+    position: relative;
+    .bg{
+        display: block;
+    }
+    .hover{
+        position: absolute;
+        display: block;
+        &.topLeft{
+            top: 0;
+            left: 0;
+        }
+        &.rightBottom{
+            right: 0;
+            bottom: 0;
+        }
+        &.leftBottom{
+            left: 0;
+            bottom: 0;
+        }
+        &.center{
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+
+.category_tt{
+    height: 58px;
+    .bd{
+        font-size: 16px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #121732;
+    }
+    .ft{
+        margin-left: 6px;
+        font-size: 13px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #949BA5;
+    }
+    .icon_right{
+        height: 7px;
+    }
+    .icon_fresh{
+        height: 12px;
+    }
+}
+
+.score_label{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1px 4px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 9px 0px 4px 0px;
+    font-size: 12px;
+    color: #fff;
+    align-items: center;
+    .icon{
+        width: 9px;
+        margin-right: 2px;
+    }
+}
 
 </style>

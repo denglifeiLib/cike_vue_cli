@@ -22,8 +22,23 @@ export default new Router({
             component: () => import('./views/test.vue')
         },{
             path: '/learn_center',
-            name: 'learn_center',
-            component: () => import('./views/learnCenter/learn_center.vue')
+            // name: 'learn_center',
+            component: () => import('./views/learnCenter/learn_center.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: 'center_all'
+                },
+                {
+                    path: 'center_all',
+                    name: 'center_all',
+                    component: () => import('./views/learnCenter/centerAll.vue'),
+                }, {
+                    path: 'center_peixun',
+                    name: 'center_peixun',
+                    component: () => import('./views/learnCenter/centerPeixun.vue'),
+                }
+            ]
         },{
             path: '/living/',
             name: 'living',
