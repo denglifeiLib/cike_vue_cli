@@ -23,10 +23,10 @@
             <div class="main">
                 <table>
                     <tr>
-                        <th>日期</th>
-                        <th>类型</th>
-                        <th>付款笔数</th>
-                        <th>收入（元）</th>
+                        <th width="100">日期</th>
+                        <th width="100">类型</th>
+                        <th width="100">付款笔数</th>
+                        <th width="100">收入（元）</th>
                     </tr>
                     <tr v-for="(item,i) in list" :key="i">
                         <td>{{item.date}}</td>
