@@ -48,7 +48,7 @@
                 </div>
             </PopWrap>  
 
-            <van-calendar v-model="showCalender" type="range" @confirm="onConfirm" />
+            <van-calendar v-model="showCalender" type="range" @confirm="onConfirm" :min-date="minDate" :max-date="maxDate" />
 
     </div>
 </template>
@@ -67,6 +67,8 @@ export default {
             showCalender:false,
             choosedVal: '',
             date: '2020-08-01～2020-08-30',
+            minDate: new Date(2000, 0, 1),
+            maxDate: new Date(2050, 0, 31),
             list: [
                 {
                     date: '2020-08-01',
