@@ -129,42 +129,6 @@ export default {
                     isFull: false,
                     isNew: false,
                     isHot: true
-                }, {
-                    teacher: '汪涛',
-                    header: require('../../assets/images/header.jpg'),
-                    introduce: '有功无过是短暂的，无功有过是行不通的，有功有过是最好的',
-                    timeLong: '20小时',
-                    studentNum: '2340',
-                    isFull: false,
-                    isNew: false,
-                    isHot: true
-                }, {
-                    teacher: '汪涛',
-                    header: require('../../assets/images/header.jpg'),
-                    introduce: '有功无过是短暂的，无功有过是行不通的，有功有过是最好的',
-                    timeLong: '20小时',
-                    studentNum: '2340',
-                    isFull: true,
-                    isNew: true,
-                },
-                {
-                    teacher: '汪涛',
-                    header: require('../../assets/images/header.jpg'),
-                    introduce: '有功无过是短暂的，无功有过是行不通的，有功有过是最好的',
-                    timeLong: '20小时',
-                    studentNum: '2340',
-                    isFull: false,
-                    isNew: false,
-                    isHot: true
-                }, {
-                    teacher: '汪涛',
-                    header: require('../../assets/images/header.jpg'),
-                    introduce: '有功无过是短暂的，无功有过是行不通的，有功有过是最好的',
-                    timeLong: '20小时',
-                    studentNum: '2340',
-                    isFull: false,
-                    isNew: false,
-                    isHot: true
                 }
             ],
             myClassList: [

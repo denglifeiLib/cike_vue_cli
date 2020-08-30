@@ -58,7 +58,7 @@
 
             <!-- 最近直播 -->
             <div class="card">
-                <div class="category_tt flex_box">
+                <div class="category_tt flex_box" @click="$router.push({name: 'view_all'})">
                     <div class="bd">最近直播</div>
                     <span class="ft">查看全部</span>
                     <img src="../../assets/images/icon_right_g@2x.png" alt="" class="ft icon_right">

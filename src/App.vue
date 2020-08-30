@@ -24,9 +24,23 @@
        <router-view 
         @tabbar="tabbar" 
         @showClasstip="showClasstip"  
+        @showDialog="showDialog"
         :class="['child-view', header_show ? '':'no_header_page']"/>
         
-        
+        <mt-popup v-model="confirmPop.show" position="center" class="mint-popup confirm_pop">
+            <div class="pop_wrap">
+                <div class="cont">
+                    <p class="title" v-if="confirmPop.title">{{confirmPop.title}}</p>
+                    <p class="text flex_box" v-if="confirmPop.text">
+                        <span>{{confirmPop.text}}</span>
+                    </p>
+                </div>
+                <div class="btns flex_box justify">
+                    <button class="btn grey" @click="cancel()">取消</button>
+                    <button class="btn blue" @click="confirm()">确定</button>
+                </div>
+            </div>
+        </mt-popup>
         
   </div>
 </template>
@@ -40,6 +54,13 @@ export default {
             tabbar_show: false,
             tabbar_active: 0,
             tabVal: 'item0',
+
+            confirmPop: {
+                show: false,
+                title: '',
+                text: '',
+                cancel: ()=>{}
+            },
 
             showTip: false,
             tabs: [
@@ -103,6 +124,35 @@ export default {
         },
         hideClasstip() {
             this.showTip = false
+        },
+
+        showDialog(opt) {
+            this.confirmPop = {...this.confirmPop, ...opt}
+        },
+
+        cancel() {
+            this.confirmPop.show = false;
+            this.confirmPop.cancel && this.confirmPop.cancel()
+            setTimeout(()=>{
+                this.confirmPop = {
+                    show: false,
+                    title: '',
+                    text: '',
+                    cancel: ()=>{}
+                }
+            }, 300)
+        },
+        confirm() {
+            this.confirmPop.show = false;
+            this.confirmPop.cancel && this.confirmPop.confirm()
+            setTimeout(()=>{
+                this.confirmPop = {
+                    show: false,
+                    title: '',
+                    text: '',
+                    cancel: ()=>{}
+                }
+            }, 300)
         },
 
         changeTab(item,i) {
@@ -189,6 +239,34 @@ export default {
     
 }
 
+.confirm_pop{
+    width: 309px;
+    padding: 27px 22px;
+    border-radius: 12px;
+    .title{
+        text-align: center;
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+    }
+    .text{
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 16px;
+        min-height: 60px;
+        // font-weight: 500;
+        justify-content: center;
+    }
+    .cont{
+        min-height: 100px;
+    }
+    .btns{
+        .btn{
+            width: 120px;
+            height: 42px;
+        }
+    }
+}
 
 
 .btn{

@@ -37,8 +37,28 @@ export default new Router({
                     path: 'center_peixun',
                     name: 'center_peixun',
                     component: () => import('./views/learnCenter/centerPeixun.vue'),
+                }, {
+                    path: 'center_live',
+                    name: 'center_live',
+                    component: () => import('./views/learnCenter/centerLive.vue'),
                 }
             ]
+        }, {
+            path: '/center_search',// 用户端-展开大家都在搜 
+            name: 'center_search',
+            component: () => import('./views/learnCenter/centerSearch.vue'),
+        }, {
+            path: '/center_filter',// 用户端-学习中心筛选
+            name: 'center_filter',
+            component: () => import('./views/learnCenter/centerFilter.vue'),
+        }, {
+            path: '/filter_result',// 用户端-学习中心筛选
+            name: 'filter_result',
+            component: () => import('./views/learnCenter/filterResult.vue'),
+        }, {
+            path: '/view_all',// 用户端-查看更多界面
+            name: 'view_all',
+            component: () => import('./views/learnCenter/viewAll.vue'),
         },{
             path: '/living/',
             name: 'living',
@@ -103,6 +123,33 @@ export default new Router({
             path: '/teacher_view_data',// 教师端-数据查看
             name: 'teacher_view_data',
             component: () => import('./views/teacher/viewData.vue')
+        },{
+            path: '/living_detail',// 用户端-录播课程详情
+            // name: 'living_detail',
+            component: () => import('./views/detail/livingDetail.vue'),
+            children: [
+                {
+                    path: '',
+                    redirect: 'class'
+                },
+                {
+                    path: 'class',
+                    name: 'living_detail_class',
+                    component: () => import('./views/detail/livingDetailClass.vue'),
+                }, {
+                    path: 'menue',
+                    name: 'living_detail_menue',
+                    component: () => import('./views/detail/livingDetailMenu.vue'),
+                }, {
+                    path: 'introduce',
+                    name: 'living_detail_introduce',
+                    component: () => import('./views/detail/livingDetailIntroduce.vue'),
+                }, {
+                    path: 'comment',
+                    name: 'living_detail_comment',
+                    component: () => import('./views/detail/livingDetailComment.vue'),
+                }
+            ]
         }
 
         

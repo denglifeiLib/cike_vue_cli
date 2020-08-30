@@ -2,28 +2,35 @@
     <div class="learn_center_page">
         <div class="main">
             <div class="flex_box">
-                <search v-model="search" class="bd"></Search>
-                <img src="../../assets/images/cike/btnshaixuan@2x.png" alt="" class="ft shaixuanBtn" @click="popType='leimu';showPop=true">
+                <div class="bd" @click="$router.push({name: 'center_search'})">
+                    <search v-model="search" class="bd"></Search>
+                </div>
+                <img src="../../assets/images/cike/btnshaixuan@2x.png" alt="" class="ft shaixuanBtn" @click="$router.push({name: 'center_filter'})">
             </div>
             <div class="flex_box justify tabs_box">
                 <tabs :list="tabList" :active="activeTab" @change="changeTab" class="bd"></tabs> 
-                <img src="../../assets/images/btn_gdtab@2x.png" alt="" class="saixuan" @click="popType='pindao';showPop=true">
+                <img src="../../assets/images/btn_gdtab@2x.png" alt="" class="saixuan" @click="showPindaoPop=true">
             </div>
             <router-view></router-view>
           
         </div>
+        
         <PopWrap 
-            :popupVisible="showPop" 
-            :title="popType=='leimu'?'筛选':'选择频道'"
+            :popupVisible="showPindaoPop" 
+            title="选择频道"
+            :showClose="false"
             @cancel="showPop=false">
             <div class="shaixuan_alert">
-                <div class="item" v-for="(item,i) in popType=='leimu'?popLeimuList:popPindaouList" :key="i">
-                    <p class="catogry_tt" v-if="item.title">{{item.title}}</p>
+                <div class="item">
                     <div class="flex_box btns">
-                        <button v-for="(btn,j) in item.list" :key="j" :class="['btn', btn.checked?'blue':'grey']" @click="choose(item, item.list, i, j)">{{btn.label}}</button>
+                        <button 
+                            v-for="(btn,j) in popPindaouList" 
+                            :key="j" 
+                            :class="['btn', tabList[activeTab]===btn?'blue':'grey']" 
+                            @click="showPindaoPop=false;changeTab(tabList.indexOf(btn))">{{btn}}</button>
                     </div>
                 </div>
-                <button class="btn block white" @click="chooseConfirm()">确定</button>
+                <button class="btn block white" @click="showPindaoPop=false">取消</button>
             </div>
         </PopWrap>  
     </div>
@@ -42,33 +49,11 @@ export default {
             tabList: ['推荐', '内勤培训', '外勤培训', '触客培训', '直播'],
             activeTab: 0,
             search: '',
-            showPop: false,
+            showLeimuPop: false,
+            showPindaoPop: false,
             popType: '', // leimu pindao
+            popPindaouList: ['推荐', '内勤培训', '外勤培训', '触客培训', '直播'],
             popLeimuList: [
-                {
-                    title: '',
-                    list: [
-                        {
-                            label: '推荐',
-                            value: '',
-                            checked: true
-                        }, {
-                            label: '内勤培训',
-                            value: ''
-                        }, {
-                            label: '外勤培训',
-                            value: ''
-                        }, {
-                            label: '触客培训',
-                            value: ''
-                        }, {
-                            label: '直播',
-                            value: ''
-                        }
-                    ]
-                }
-            ],
-            popPindaouList: [
                 {
                     title: '状态',
                     list: [
@@ -156,32 +141,35 @@ export default {
            this.activeTab = index;
             switch (index) {
                 case 0:
-                    this.$router.replace('center_all');
+                    this.$router.replace('class');
                     break;
                 case 1:
-                    this.$router.replace('center_peixun');
+                    this.$router.replace('menue');
                     break;
                 case 2:
-                    this.$router.replace('center_peixun');
+                    this.$router.replace('introduce');
                     break;
                 case 3:
-                    this.$router.replace('center_peixun');
+                    this.$router.replace('comment');
                     break;
             }
         },
-        choose(item, list, i, j) {
-            let popList = this.popType === 'leimu' ? this.popLeimuList : this.popPindaouList;
-            let newVal = {
-                title: item.title,
-                list: list.map((type,index)=> {
-                    type.checked = index=== j ? true : false;
-                    return type
-                })
-            }
-            popList.splice(i, 1, newVal)
-        },
-        chooseConfirm() {
-            this.showPop = false;
+        choosePindao(item, j) {
+
+            // let popList = this.popType === 'leimu' ? this.popLeimuList : this.popPindaouList;
+            // let newVal = {
+            //     title: item.title,
+            //     list: list.map((type,index)=> {
+            //         if(index=== j) {
+            //             type.checked = true;
+            //             this.popType === 'leimu' && (this.activeTab = this.tabList.indexOf(list[j].label))
+            //         } else {
+            //             type.checked = false
+            //         }
+            //         return type
+            //     })
+            // }
+            // popList.splice(i, 1, newVal)
         }
     },
     components: {Tabs, Swiper, Search, PopWrap}

@@ -2,7 +2,7 @@
     <mt-popup v-model="popupVisible" position="bottom" class="mint-popup common_pop_wrap">
         <div class="pop_wrap">
             <div class="pop_box">
-                <img src="static/images/close.png" alt="" class="close" @click="close()">
+                <img src="static/images/close.png" alt="" class="close" @click="close()" v-if="showClose">
                 <span class="skip" @click="skip()" v-if="showSkip">跳过</span>
                 <div class="pop_tt">{{title}}</div>
                 <div class="cont">
@@ -25,6 +25,10 @@ export default({
             default: false
         },
         showSkip:{ 
+            type: Boolean,
+            default: false
+        },
+        showClose:{ 
             type: Boolean,
             default: false
         },
