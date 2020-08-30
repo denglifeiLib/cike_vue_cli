@@ -1,5 +1,5 @@
 <template>
-    <div class="page_wrap">
+    <div class="orders_page_wrap">
        <div class="flex_box">
            <tabs :list="tabList" :active="activeTab" @change="changeTab" class="bd"></tabs> 
             <img src="../../assets/images/shaixuan@2x.png" alt="" class="saixuan">
@@ -39,6 +39,12 @@
                     <button class="btn plain_grey ft" v-if="item.status==='3'">评价</button>
                 </div>
             </div>
+
+            <div class="empty" v-if="!myClassList || myClassList.length==0">
+                <img src="../../assets/images/my/kong_dindan@2x.png" alt="">
+                <span class="text_dis">暂无评论</span>
+            </div>
+
        </div>
     </div>
 </template>
@@ -95,12 +101,16 @@ export default {
             '2': '已完成',
             '3': '待评价',
         }
+
+        this.changeTab((this.$route.query||{}).activeTab || 0)
         this.myClassList = this.allClassList
+
+        console.log(999, this.$route.query)
     },
     methods: {
        changeTab(index) {
            console.log(333, index)
-            this.activeTab = index;
+            this.activeTab = index*1;
             if(index===0) {
                 this.myClassList = this.allClassList
             } else {
@@ -113,8 +123,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.orders_page_wrap{
+    .empty{
+        height: calc(100vh - 90px);
+        padding-bottom: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 95px;
+            margin-bottom: 12px;
+        }
+    }
+}
+
     .main{
         margin-top: 12px;
+        padding: 0 16px;
         overflow: hidden;
     }
     .saixuan{

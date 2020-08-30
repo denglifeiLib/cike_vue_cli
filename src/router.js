@@ -88,6 +88,14 @@ export default new Router({
             name: 'my',
             component: () => import('./views/my/my.vue')
         }, {
+            path: '/my_class', //用户端-我的
+            name: 'my_class',
+            component: () => import('./views/my/myClass.vue')
+        }, {
+            path: '/my_path', //用户端-学习足迹
+            name: 'my_path',
+            component: () => import('./views/my/myPath.vue')
+        }, {
             path: '/teacher_my', //教师端-我的
             name: 'teacher_my',
             component: () => import('./views/my/myTeacher.vue')
@@ -150,6 +158,14 @@ export default new Router({
                     component: () => import('./views/detail/livingDetailComment.vue'),
                 }
             ]
+        }, {
+            path: '/error_page',// 用户端-断网
+            name: 'error_page',
+            component: () => import('./views/errorPage.vue'),
+        }, {
+            path: '/error_load_page',// 用户端-加载失败
+            name: 'error_load_page',
+            component: () => import('./views/errorLoadPage.vue'),
         }
 
         
