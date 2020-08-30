@@ -141,16 +141,19 @@ export default {
            this.activeTab = index;
             switch (index) {
                 case 0:
-                    this.$router.replace('class');
+                    this.$router.replace('center_all');
                     break;
                 case 1:
-                    this.$router.replace('menue');
+                    this.$router.replace('center_peixun');
                     break;
                 case 2:
-                    this.$router.replace('introduce');
+                    this.$router.replace('center_peixun');
                     break;
                 case 3:
-                    this.$router.replace('comment');
+                    this.$router.replace('center_peixun');
+                    break;
+                case 4:
+                    this.$router.replace('center_live');
                     break;
             }
         },

@@ -5,7 +5,7 @@
         class="tab-item flex_box" :key="index" 
         :style="{height: height+'px'}"
         :class="{on: active==index, large: size==='large', longBar: longBar}" 
-        @click="handler(index)">
+        @click="handler(index, item)">
         <span class="preNum" v-if="item.preNum">{{item.preNum}}</span>
         {{item.label || item}}
         <span class="num" v-if="item.number">{{item.number}}</span>
@@ -58,8 +58,8 @@
     created() {},
     computed:{},
     methods: {
-      handler(index) {
-        this.$emit('change', index)
+      handler(index, item) {
+        this.$emit('change', index, item)
       }
     }
   })

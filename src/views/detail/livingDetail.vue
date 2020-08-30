@@ -13,7 +13,28 @@ export default {
     name: 'test',
     data() {
         return {
-            tabList: ['课程介绍','课程目录','课程推荐','评价（114）'],
+            // tabList: ['课程介绍','课程目录','课程推荐','评价（114）'],
+            tabList: [
+                {
+                    label: '课程介绍',
+                    value: 'ke_jieshao'
+                }, {
+                    label: '课程目录',
+                    value: 'ke_mulv'
+                }, {
+                    label: '课程推荐',
+                    value: 'ke_tuijian'
+                }, {
+                    label: '评价（114）',
+                    value: 'pingjia'
+                }, {
+                    label: '直播介绍',
+                    value: 'zhibo_jieshao'
+                }, {
+                    label: '直播推荐',
+                    value: 'zhibo_tuijian'
+                }
+            ],
             activeTab: 0,
         }
     },
@@ -28,8 +49,28 @@ export default {
         })
     },
     methods: {
-       changeTab(index) {
-            this.activeTab = index
+       changeTab(index, {value}) {
+            this.activeTab = index;
+            switch (value) {
+                case 'ke_jieshao':
+                    this.$router.replace('class');
+                    break;
+                case 'zhibo_jieshao':
+                    this.$router.replace('class');
+                    break;
+                case 'ke_mulv':
+                    this.$router.replace('menue');
+                    break;
+                case 'ke_tuijian':
+                    this.$router.replace('introduce');
+                    break;
+                case 'zhibo_tuijian':
+                    this.$router.replace('introduce');
+                    break;
+                case 'pingjia':
+                    this.$router.replace('comment');
+                    break;
+            }
         },
     },
     components: {Tabs}

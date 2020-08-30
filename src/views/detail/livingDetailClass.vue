@@ -1,5 +1,29 @@
 <template>
     <div class="living_detail_class_page">
+
+        <!-- 回放 -->
+        <div class="card playBack flex_box">
+            <button class="btn orange hd">回放</button>
+            <p class="bd f17">2020-08-24 20:00</p>
+            <span class="text_dis ft">时长 24:31</span>
+        </div>
+
+        <!-- 倒计时 -->
+        <div class="card countdown_box">
+            <p class="f14 bold">距离<span class="red"> 08-24 20:00</span> 直播开始还有</p>
+            <div class="times flex_box">
+                <div class="box">02<span class="text">天</span></div>
+                <div class="box">04<span class="text">时</span></div>
+                <div class="box">50<span class="text">分</span></div>
+                <div class="box">30<span class="text">秒</span></div>
+            </div>
+            <p class="text_dis">4523 人已预约 </p>
+            <div class="btn_box">
+                <button class="btn block plain_red" v-if="!alreadyYuyue" @click="yuyue()">预约直播</button>
+                <button class="btn block plain_grey" v-if="alreadyYuyue">已预约</button>
+            </div>
+        </div>
+
         <div class="card">
             <div class="view flex_box">
                 <div class="bd">
@@ -68,145 +92,22 @@
                 </button>
             </div>
         </div>
-        <div class="card mulu">
-            <div class="f16 bold tt">课程目录</div>
-            <div class="flex_box text_dis sub_tt">
-                <span class="bd">
-                    进度14/15
-                    <img src="../../assets/images/weiwanc@2x.png" alt="" class="label">
-                </span>
-                <img src="../../assets/images/yiwenicon@2x.png" alt="" class="ft yiwen">
-                <span class="ft">完成规则</span>
-            </div>
-            <ul class="list">
-                <li class="flex_box red">
-                    <p class="bd">01、软件入门</p>
-                    <img src="../../assets/images/icon_zcsk@2x.png" alt="" class="icon">
-                </li>
-                <li class="flex_box">
-                    <p class="bd">02、界面介绍&新建和存储</p>
-                    <img src="../../assets/images/kybf@2x.png" alt="" class="icon">
-                </li>
-                <li class="flex_box grey">
-                    <p class="bd">03、如何创建一个逼真的场景</p>
-                    <img src="../../assets/images/ywc@2x.png" alt="" class="icon">
-                </li>
-                <li class="flex_box">
-                    <p class="bd">04、课后作业</p>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 课程推荐 -->
-        <div class="card guess_card">
-            <div class="category_tt flex_box">
-                <div class="bd">课程推荐</div>
-                <img src="../../assets/images/hypicon@2x.png" alt="" class="ft icon_fresh">
-                <span class="ft">换一批</span>
-            </div>
-            <img src="../../assets/images/cike/cnxh_banner@2x.png" alt="" class="banner">
-            <div class="guessList">
-                <div class="item flex_box" v-for="(item,i) in guessList" :key="i">
-                    <div class="image_hover">
-                        <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
-                        <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
-                        <div class="score_label hover rightBottom">
-                            <img src="../../assets/images/xin_s@2x.png" alt="" class="icon">
-                            <span class="">{{item.score}}</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="f14 title ellipsis2">{{item.title}}</p>
-                        <p class="text_dis" v-if="item.isFree">
-                            <img src="../../assets/images/playcishu@2x.png" alt="" class="group_icon ft">
-                            <span class="f11">{{item.view}}万人已学</span>
-                        </p>
-                        <p class="text_dis" v-else>
-                            <span class="f10 red">¥</span>
-                            <span class="f14 red">{{item.price}}</span>
-                            <span class="f10 originPrice">{{item.originPrice}}</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card my_comment">
-            <div class="f16 bold tt">我的评价</div>
-            <div class="commont_arae">
-                <star v-model="score"></star>  
-                <p class="text_dis">您的宝贵评价，对我们非常重要哦～</p>
-            </div>
-            <div class="all_comments_box">
-                <div class="f16 bold tt">全部评价</div>
-                <div class="starts_view flex_box">
-                    <div class="hd">
-                        <p class="text_dis">145条评价</p>
-                        <div class="val">
-                            <span class="val_num">4.8</span>
-                            星
-                        </div>
-                    </div>
-                    <div class="bd">
-                        <div class="flex_box row" v-for="(star,i) in starPercent" :key="i">
-                            <div class="stars hd">
-                                <img src="../../assets/images/xin_s@2x.png" alt="" v-for="j in (5-i)" :key="j">
-                            </div>
-                            <div class="bar bd"><div class="val" :style="{width: star}"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="comment_list_box">
-                    <div class="comment_item flex_box">
-                        <img src="../../assets/images/header.jpg" alt="" class="header hd">
-                        <div class="bd">
-                            <p class="name">
-                                蒋洋
-                                <star value="5" class="box"></star>  
-                                <span class="fr zan">
-                                    210 
-                                    <img src="../../assets/images/dianzan@2x.png" alt="" class="img">
-                                </span>
-                            </p>
-                            <p class="comment_con">真心觉得老师的课程讲解的是最贴近实战的是最贴近实战的，而且对我这种小白很友好，爱了～</p>
-                            <p class="dis">2020-08-10</p>
-                        </div>
-                    </div>
-                    <div class="comment_item flex_box">
-                        <img src="../../assets/images/header.jpg" alt="" class="header hd">
-                        <div class="bd">
-                            <p class="name">
-                                蒋洋
-                                <star value="5" class="box"></star>  
-                                <span class="fr zan">
-                                    210 
-                                    <img src="../../assets/images/dianzan_s@2x.png" alt="" class="img">
-                                </span>
-                            </p>
-                            <p class="comment_con">真心觉得老师的课程讲解的是最贴近实战的是最贴近实战且对我这种小白很友好，爱了～</p>
-                            <p class="dis">2020-08-10</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
         
+
         <!-- 分享 -->
         <share :showPop="showSharePop" @handle="shareHandle" @cancel="showSharePop=false"></share>
         <haibao :showPop="showHaibaoPop" @cancel="showHaibaoPop=false"></haibao>
         <!-- 收藏 -->
         <shou-can-flow :showPop="showShouCanPop" @cancel="showShouCanPop=false" @shoucanSucc="shoucanSucc()"></shou-can-flow>
         
-        <!-- 讨论详情all --> 
+         <!-- 讨论详情all --> 
         <mt-popup v-model="showTaolun" position="bottom" class="mint-popup taolun_pop">
             <img src="../../assets/images/close.png" alt="" class="close" @click="showTaolun=false">
             <div class="tt f16">
                 讨论区 <span class="text_dis">共48条</span>
             </div>
             <p class="bar">全部评论</p>
-            <div class="comment_list_box">
+            <!-- <div class="comment_list_box">
                 <div class="comment_item flex_box">
                     <img src="../../assets/images/header.jpg" alt="" class="header hd">
                     <div class="bd">
@@ -231,7 +132,13 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+
+            <div class="empty">
+                <img src="../../assets/images/kong_pinjia@2x.png" alt="">
+                <span class="text_dis">暂无评论</span>
             </div>
+
             <div class="comment_input flex_box">
                 <mt-field placeholder="发表讨论…" v-model="comment" class="bd"></mt-field>
                 <button class="btn white ft send" :disabled="!comment">发送</button>
@@ -298,15 +205,24 @@
             </div>
         </mt-popup>
 
+        <!-- 预约成功 -->
+        <mt-popup v-model="yuyueSuccessPop" position="center" class="mint-popup shoucan_confirm_pop">
+            <div class="success_wrap" v-if="yuyueSuccessPop">
+                <img src="../../assets/images/tostcg@2x.png" alt="" class="img">
+                <p class="tt f16">预约成功</p>
+                <p>开播前将通过公众号消息进行通知</p>
+            </div>
+        </mt-popup>
+
     </div>
 </template>
 
 <script>
 import Share from '@/components/Share';
 import Haibao from '@/components/Haibao';
-import Star from '@/components/Star';
-import Tabs from '@/components/Tabs';
+
 import ShouCanFlow from '@/components/ShouCanFlow';
+
 import PopWrap from '@/components/PopWrap';
 import * as Axios from '@/utils/Action';
 export default {
@@ -316,56 +232,18 @@ export default {
             showSharePop: false,
             showHaibaoPop: false,
             showShouCanPop: false,
-            showTaolun: false,
-            showTaolun2: true,
+            yuyueSuccessPop: false,
+            
             isFree: true,
             isFocus: false,
             hasShoucan: false,
-            score: 0,
+
+            alreadyYuyue: false,
+
+            showTaolun: false,
+            showTaolun2: false,
             comment: '',
-            guessList: [
-                {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
-                }
-            ],
-            starPercent: ['90%','80%','60%','30%','0%',]
+            
         }
     },
     created() {
@@ -400,9 +278,16 @@ export default {
         shoucanSucc() {
             this.showShouCanPop = false;
             this.hasShoucan = true;
+        },
+        yuyue() {
+            this.yuyueSuccessPop = true;
+            setTimeout(()=> {
+                this.yuyueSuccessPop = false;
+                this.alreadyYuyue = true;
+            }, 3000)
         }
     },
-    components: {Tabs, Share, Haibao, Star, ShouCanFlow, PopWrap}
+    components: {Share, Haibao, ShouCanFlow, PopWrap}
 }
 </script>
 
@@ -413,9 +298,54 @@ export default {
         padding: 24px 16px ;
         margin-top: 12px;
     }
-    .living_hook{
-        height: 211px;  
-   }
+
+    .countdown_box{
+        padding: 24px 8px 0;
+        text-align: center;
+        .times{
+            padding: 13px 0 10px;
+            font-size: 32px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: #121732;
+            line-height: 45px;
+            justify-content: space-around;
+            .text{
+                font-size: 12px;
+            }
+        }
+        .btn_box{
+            padding: 12px 16px;
+            margin-top: 12px;
+             border-top: solid 1px #F0F0F0;
+            .btn{
+                height: 32px;
+            }
+            .plain_grey{
+                color: #949BA5;
+                border-color: #BFC3D0;
+            }
+        }
+    }
+
+    .playBack{
+        height: 37px;
+        padding: 0 16px;
+        .orange{
+            min-width: auto;
+            width: 40px;
+            height: 21px;
+            padding: 0;
+            text-align: center;
+            background: #FF902E;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .bd{
+            padding-left: 12px;
+        }
+    }
+
 
    .view{
        align-items: flex-start;
@@ -537,106 +467,34 @@ export default {
         }
    }
 
-   .mulu{
-       padding-bottom: 8px;
-       .yiwen{
-           width: 12px;
-           margin-right: 6px;
-       }
-       .label{
-           height: 18px;
-           margin-left: 8px;
-           vertical-align: middle;
-       }
-       .sub_tt{
-           font-size: 13px;
-           padding-top: 4px;
-           padding-bottom: 8px;
-       }
-       .bd{padding-left: 0;}
-       .list{
-           li{
-               height: 52px;
-               border-top: solid 1px #F0F0F0;
-               font-size: 14px;
-               font-weight: bold;
-               &:first-child{
-                   border-top: 0;
-               }
-               .icon{
-                   width: 15px;
-               }
-           }
-       }
-   }
+    
 
-    .guess_card{
-       padding-top: 0;
-        .banner{
-            margin-bottom: 24px;
-            display: block;
-            width: 100%;
-        }
-    }
-    .guessList{
-        flex-direction: column;
-        .image_hover{
-            margin-right: 14px;
-        }
-        .item{
-            width: 100%;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: solid 1px #F0F0F0;
-            &:last-child{
-                border-bottom: 0;
-                margin-bottom: 0;
-                padding-bottom: 0;
-            }
-        }
-        .poster{
-            width: 123px;
-            height: 68px;
-            border-radius: 3px;
-        }
-        .topLeft{
-            width: 58px;
-        }
-        .title{
-            margin: 0 0 5px;
-            height: 38px;
-        }
-        .group_icon{
-            height: 10px;
-            margin-right: 3px;
-            vertical-align: middle;
-        }
-        .originPrice{
+   .btm_fixed{
+       position: fixed;
+       left: -0;
+       right: 0;
+       bottom: 0;
+       height: 48px;
+       padding: 0 16px 0 24px;
+        z-index: 888;
+        background: #FFFFFF;
+        box-shadow: 0px -1px 0px 0px #E4E4E4;
+       .originPrice{
+           margin-left: 16px;
             border-bottom: solid 1px #949BA5;
             line-height: 0.1;
             display: inline-block;
         }
-    }
-    
+        .btn{
+            height: 36px;
+            width: 103px;
+            .icon{
+                margin-left: 8px;
+                width: 5px;
+            }
+        }
+   }
 
-    .my_comment{
-        padding: 18px 16px 21px;
-        .commont_arae{
-            padding: 18px 16px 21px;
-            text-align: center;
-            border-bottom: solid 1px #F0F0F0;
-            .text_dis{
-                padding-top: 14px;
-            }
-            .star .star-item{
-                width: 22px;
-                height: 22px;
-            }
-        }
-        .all_comments_box{
-            padding-top: 18px;
-        }
-    }
 
     .all_comments_box{
         .starts_view{
@@ -722,32 +580,6 @@ export default {
         }
     }
 
-   .btm_fixed{
-       position: fixed;
-       left: -0;
-       right: 0;
-       bottom: 0;
-       height: 48px;
-       padding: 0 16px 0 24px;
-        z-index: 888;
-        background: #FFFFFF;
-        box-shadow: 0px -1px 0px 0px #E4E4E4;
-       .originPrice{
-           margin-left: 16px;
-            border-bottom: solid 1px #949BA5;
-            line-height: 0.1;
-            display: inline-block;
-        }
-        .btn{
-            height: 36px;
-            width: 103px;
-            .icon{
-                margin-left: 8px;
-                width: 5px;
-            }
-        }
-   }
-
     .taolun_pop{
         width: 100%;
         border-radius:12px 12px 0px 0px;
@@ -772,6 +604,7 @@ export default {
         }
         .comment_list_box{
             max-height: calc(100vh - 100px);
+            min-height: 300px;
             padding: 14px;
             overflow: scroll;
             .header{
@@ -826,6 +659,35 @@ export default {
                 font-weight: 500;
                 color: #1B226E;
             }
+        }
+    }
+
+    .success_wrap{
+        // width: 185px;
+        height: 175px;
+        padding: 32px 22px;
+        background: rgba(255, 255, 255, 0.84);
+        border-radius: 12px;
+        border: 1px solid #F0F0F0;
+        text-align: center;
+        .img{
+            width: 44px;
+        }
+        .tt{
+            padding: 18px 0 10px;
+            font-weight: bold;
+        }
+    }
+
+    .empty{
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 95px;
+            margin-bottom: 12px;
         }
     }
 }
