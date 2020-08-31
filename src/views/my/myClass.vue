@@ -3,8 +3,8 @@
        <tabs :list="tabList" :active="activeTab" @change="changeTab" class="bd"></tabs> 
 
        <div class="main card">
-            <div class="guessList" v-if="guessList && guessList.length">
-                <div class="item flex_box" v-for="(item,i) in guessList" :key="i">
+            <div class="guessList" v-if="guessList && myClassList.length">
+                <div class="item flex_box" v-for="(item,i) in myClassList" :key="i">
                     <div class="image_hover">
                         <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                         <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="empty" v-if="!guessList || guessList.length==0">
+            <div class="empty" v-if="!myClassList || myClassList.length==0">
                 <img src="../../assets/images/my/kong_kecheng@2x.png" alt="">
                 <span class="text_dis">暂无课程</span>
                 <button class="btn plain_grey" @click="$router.go(-1)">返回</button>
@@ -55,7 +55,7 @@ export default {
                 value: 1
             }],
             activeTab: 0,
-
+            myClassList: [],
             guessList: [
                 {
                     poster: require('../../assets/images/header.jpg'),
@@ -110,19 +110,16 @@ export default {
             '3': '待评价',
         }
 
-        this.changeTab((this.$route.query||{}).activeTab || 0)
-        this.myClassList = this.allClassList
-
-        console.log(999, this.$route.query)
+        this.changeTab(0)
     },
     methods: {
        changeTab(index) {
            console.log(333, index)
             this.activeTab = index*1;
             if(index===0) {
-                this.myClassList = this.allClassList
+                this.myClassList = [this.guessList[0], this.guessList[1]]
             } else {
-                this.myClassList = this.allClassList.filter(item=> item.status == index-1)
+                this.myClassList = this.guessList
             }
         },
     },

@@ -5,24 +5,28 @@
             <div class="text_dis">成功预约 汪涛老师 私课</div>
             <p class="color_shadow">{{data.time}}</p>
             <button class="btn blue block">进入教室</button>
+             <p class="text_dis">如您有问题可以进入教室后点击沟通按钮发送问题和资料</p>
         </div>
-        <div class="card question">
+        <!-- <div class="card question">
             <p class="tt">您的问题</p>
             <p class="text_dis">填写您想咨询老师的问题，方便老师提前准备</p>
-            <button class="btn plain_grey block">填写</button>
-        </div>
+            <button class="btn plain_grey block f16">填写</button>
+           
+        </div> -->
         <img src="../../assets/images/kefu@2x.png" alt="" class="kefu" @click="showPop=true">
 
         <PopWrap 
             :popupVisible="showPop" 
             title="添加客服"
+            :showClose="true"
             @cancel="showPop=false"
             @skip="showPop=false">
             <div class="flex_box kefu_alert">
                 <div class="item">
                     <img src="../../assets/images/header.jpg" alt="" class="ewm">
                     <p class="text_dis">客服微信二维码</p>
-                    <button class="btn plain_blue">保存</button>
+                    <p class="text_dis btm_dis">请长按二维码保存至相册</p>
+                    <!-- <button class="btn plain_blue">保存</button> -->
                 </div>
                 <div class="item">
                     <div class="weixin_info flex_box">
@@ -78,25 +82,24 @@ export default {
     .yuyue_success_page{
         padding:0;
         .top{
-            padding: 49px 60px;
-            height:305px;
+            padding: 78px 60px 0;
+            height:472px;
             background: url('static/images/yycg_bg@2x.png') top center no-repeat;
-            background-size: 100%;
+            background-size: 100% auto;
             text-align: center;
             .suc_img{
                 height: 60px;
-                margin-bottom: 15px;
+                margin-bottom: 32px;
             }
             .text_dis{
-                margin-bottom: 10px;
+                margin-bottom: 18px;
                 font-size:15px;
                 font-family:PingFangSC-Regular,PingFang SC;
                 font-weight:400;
-                color:rgba(182,186,233,1);
             }
             .btn{
-                margin-top: 40px;
-                // width:177px;
+                margin-top: 51px;
+                margin-bottom: 32px;
                 height:43px;
                 font-size: 16px;
             }
@@ -135,10 +138,16 @@ export default {
             }
             .item{
                 height: auto;
+                &:first-child{
+                    width: 132px;
+                }
                 .btn{
                     margin: 15px auto 0;
                     width:68px;
                     height:27px;
+                }
+                .btm_dis{
+                    margin-top: 15px;
                 }
             }
             .weixin_info{

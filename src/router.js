@@ -159,6 +159,10 @@ export default new Router({
                 }
             ]
         }, {
+            path: '/login',// 用户端-加载失败
+            name: 'login',
+            component: () => import('./views/account/login.vue'),
+        }, {
             path: '/error_page',// 用户端-断网
             name: 'error_page',
             component: () => import('./views/errorPage.vue'),
