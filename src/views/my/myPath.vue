@@ -1,7 +1,13 @@
 <template>
-    <div class="orders_page_wrap">
-        <pop-filter v-model="rangeTypeFilter" :items="rangeTypeItems" name="选择排序" title="选择排序"></pop-filter>
-       <div class="empty" v-if="!myClassList || myClassList.length==0">
+    <div class="my_path_page_wrap">
+        <pop-month v-model="time" @input="changeTime"></pop-month>
+        <div class="card">
+            <div class="model" v-for="(item,i) in infos" :key="i">
+                <p class="time">{{item.time}}</p>
+                <p class="ellipsis row" v-for="(list,j) in item.list" :key="j">{{list.content}}</p>
+            </div>
+        </div>
+       <div class="empty" v-if="!infos || infos.length==0">
             <img src="../../assets/images/kong_zuji@2x.png" alt="">
             <span class="text_dis">暂无足迹</span>
             <button class="btn plain_grey" @click="$router.go(-1)">返回</button>
@@ -11,98 +17,163 @@
 
 <script>
 import * as Axios from '@/utils/Action';
-import PopFilter from '@/components/PopFilter';
+import PopMonth from '@/components/PopMonth';
 export default {
     name: 'test',
     data() {
         return {
-            tabList: [{
-                label: '课程',
-                number: 0,
-                value: 0
-            }, {
-                label: '直播',
-                number: 2,
-                value: 1
-            }],
-            activeTab: 0,
-
-            guessList: [
+            time: '2020年 - 05月',
+            infos: [
                 {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
+                    time: '2020-08-20',
+                    list: [
+                        {
+                            content: '观看直播回放「3小时观看直播回放「3小时带你通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播真经',
+                            id: 1
+                        }, {
+                            content: '观看直播险真经带你通关保险真经',
+                            id: 1
+                        },{
+                            content: '通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播回放经带你通关保险真经',
+                            id: 1
+                        }
+                    ]
                 }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
+                    time: '2020-08-20',
+                    list: [
+                        {
+                            content: '观看直播回放「3小时观看直播回放「3小时带你通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播真经',
+                            id: 1
+                        }, {
+                            content: '观看直播险真经带你通关保险真经',
+                            id: 1
+                        },{
+                            content: '通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播回放经带你通关保险真经',
+                            id: 1
+                        }
+                    ]
                 }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
+                    time: '2020-08-20',
+                    list: [
+                        {
+                            content: '观看直播回放「3小时观看直播回放「3小时带你通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播真经',
+                            id: 1
+                        }, {
+                            content: '观看直播险真经带你通关保险真经',
+                            id: 1
+                        },{
+                            content: '通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播回放经带你通关保险真经',
+                            id: 1
+                        }
+                    ]
                 }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投你有多久没有投资你自己了资你自己了',
-                    score: 4.8,
-                    isFree: true,
-                    isCombine: true,
-                    view: 1258
-                }, {
-                    poster: require('../../assets/images/header.jpg'),
-                    title: '你有多久没有投资你',
-                    score: 4.8,
-                    price: 24.32,
-                    originPrice: 430.23
+                    time: '2020-08-20',
+                    list: [
+                        {
+                            content: '观看直播回放「3小时观看直播回放「3小时带你通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播真经',
+                            id: 1
+                        }, {
+                            content: '观看直播险真经带你通关保险真经',
+                            id: 1
+                        },{
+                            content: '通关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播关保险真经带你通关保险真经',
+                            id: 1
+                        }, {
+                            content: '观看直播回放经带你通关保险真经',
+                            id: 1
+                        }
+                    ]
                 }
-            ],
+            ]
         }
     },
     created() {
         this.$emit('showClasstip')
         this.$emit('tabbar', {show: false})
-        this.classStatusMap = {
-            '0': '待付款',
-            '1': '已购买',
-            '2': '已完成',
-            '3': '待评价',
-        }
-
-        this.changeTab((this.$route.query||{}).activeTab || 0)
-        this.myClassList = this.allClassList
-
-        console.log(999, this.$route.query)
     },
     methods: {
-       changeTab(index) {
-           console.log(333, index)
-            this.activeTab = index*1;
-            if(index===0) {
-                this.myClassList = this.allClassList
-            } else {
-                this.myClassList = this.allClassList.filter(item=> item.status == index-1)
-            }
+       changeTime(time) {
+           console.log(333, time)
         },
     },
-    components: {Tabs}
+    components: {PopMonth}
 }
 </script>
 
 <style lang="less" scoped>
-.orders_page_wrap{
+.my_path_page_wrap{
+    padding: 8px 16px;
+
+    .card{
+        margin-top: 14px;
+        padding: 23px 16px;
+        height: calc(100vh - 96px);
+        overflow-y: scroll;
+        .model{
+            padding-bottom: 20px;
+            border-left: solid 2px #F5F5F5;
+            .time{
+                position: relative;
+                margin-top: -7px;
+                 margin-bottom: 12px;
+                padding-left: 19px;
+                font-size: 14px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #949BA5;
+                &::before{
+                    position: absolute;
+                    left: -5px;top: 5px;
+                    width: 3px;
+                    height: 3px;
+                    content: ' ';
+                    border: solid 3px #D32D26;
+                    border-radius: 10px;
+                }
+            }
+            .row{
+                padding-bottom: 12px;
+                padding-left: 28px;
+                font-size: 14px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #121732;
+            }
+        }
+    }
     .empty{
         height: calc(100vh - 40px);
         padding-bottom: 30%;
@@ -120,51 +191,8 @@ export default {
         }
     }
 
-    .guessList{
-        flex-direction: column;
-        min-height: calc(100vh - 90px);
-        .image_hover{
-            margin-right: 14px;
-        }
-        .item{
-            width: 100%;
-            padding: 12px 0;
-            border-bottom: solid 1px #F0F0F0;
-            &:last-child{
-                border-bottom: 0;
-            }
-        }
-        .poster{
-            width: 123px;
-            height: 68px;
-            border-radius: 3px;
-        }
-        .topLeft{
-            width: 58px;
-        }
-        .title{
-            margin: 0 0 5px;
-            height: 38px;
-        }
-        .group_icon{
-            height: 10px;
-            margin-right: 3px;
-            vertical-align: middle;
-        }
-        .originPrice{
-            border-bottom: solid 1px #949BA5;
-            line-height: 0.1;
-            display: inline-block;
-        }
-    }
 }
 
-    .main{
-        margin: 12px 16px;
-        padding: 6px 16px;
-        overflow: hidden;
-
-    }
 
     
 </style>

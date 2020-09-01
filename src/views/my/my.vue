@@ -40,7 +40,7 @@
                     <img src="../../assets/images/my/icon_wdkc@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的课程</p>
                 </li>
-                <li>
+                <li @click="$router.push({name: 'my_favorite'})">
                     <img src="../../assets/images/my/icon_wdsc@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的收藏</p>
                 </li>
@@ -48,7 +48,7 @@
                     <img src="../../assets/images/my/icon_wdgz@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的关注</p>
                 </li>
-                <li>
+                <li @click="$router.push({name: 'my_path'})">
                     <img src="../../assets/images/my/icon_xxzj@2x.png" class="type_icon" alt="">
                     <p class="text_dis">学习足迹</p>
                 </li>

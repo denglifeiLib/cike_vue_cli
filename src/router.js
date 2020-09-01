@@ -96,6 +96,14 @@ export default new Router({
             name: 'my_path',
             component: () => import('./views/my/myPath.vue')
         }, {
+            path: '/my_favorite', //用户端-我的收藏
+            name: 'my_favorite',
+            component: () => import('./views/my/myFavorite.vue')
+        }, {
+            path: '/my_favorite_detail', //用户端-收藏详情
+            name: 'my_favorite_detail',
+            component: () => import('./views/my/myFavoriteDetail.vue')
+        }, {
             path: '/teacher_my', //教师端-我的
             name: 'teacher_my',
             component: () => import('./views/my/myTeacher.vue')
