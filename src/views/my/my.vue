@@ -44,7 +44,7 @@
                     <img src="../../assets/images/my/icon_wdsc@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的收藏</p>
                 </li>
-                <li>
+                <li @click="$router.push({name: 'my_focus'})">
                     <img src="../../assets/images/my/icon_wdgz@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的关注</p>
                 </li>

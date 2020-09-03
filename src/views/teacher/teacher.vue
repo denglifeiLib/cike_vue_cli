@@ -105,6 +105,7 @@ export default {
                 border-radius:8px;
                 display: block;
                 margin-right: 12px;
+                margin-left: 16px;
             }
             .name{
                 padding-bottom: 4px;

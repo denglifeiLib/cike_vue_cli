@@ -60,9 +60,9 @@ export default new Router({
             name: 'view_all',
             component: () => import('./views/learnCenter/viewAll.vue'),
         },{
-            path: '/living/',
-            name: 'living',
-            component: () => import('./views/living/living.vue') 
+            path: '/ensurance',// 用户端-今日保险
+            name: 'ensurance',
+            component: () => import('./views/ensurance/ensurance.vue') 
         },{
             path: '/private', //私课(客户端)
             name: 'private',
@@ -101,12 +101,16 @@ export default new Router({
             component: () => import('./views/my/myFavorite.vue')
         }, {
             path: '/my_favorite_detail', //用户端-收藏详情
-            name: 'my_favorite_detail',
+            name: 'my_favorite_detail', 
             component: () => import('./views/my/myFavoriteDetail.vue')
         }, {
-            path: '/teacher_my', //教师端-我的
+            path: '/my_focus', // 用户端-我的关注
+            name: 'my_focus',
+            component: () => import('./views/my/myFocus.vue')
+        }, {
+            path: '/teacher_my', //教师端的我的
             name: 'teacher_my',
-            component: () => import('./views/my/myTeacher.vue')
+            component: () => import('./views/my/teacherDeMy.vue')
         }, {
             path: '/documents', //教师端-查看资料
             name: 'documents',
@@ -139,6 +143,10 @@ export default new Router({
             path: '/teacher_view_data',// 教师端-数据查看
             name: 'teacher_view_data',
             component: () => import('./views/teacher/viewData.vue')
+        }, {
+            path: '/teacher_detail', //用户端-老师详情
+            name: 'teacher_detail',
+            component: () => import('./views/teacher/teacherDetail.vue')
         },{
             path: '/living_detail',// 用户端-录播课程详情
             // name: 'living_detail',

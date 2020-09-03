@@ -78,7 +78,7 @@ export default {
                     name: '今日保险',
                     icon: require('./assets/images/tab_icon3_s@2x.png'),
                     slectedIcon: require('./assets/images/tab_icon3_n@2x.png'),
-                    path: '/living'
+                    path: '/ensurance'
                 }, {
                     name: '我的',
                     icon: require('./assets/images/tab_icon4_s@2x.png'),
@@ -352,6 +352,9 @@ export default {
     }
     &:disabled{
         opacity: 0.2;
+    }
+    img{
+        height: 9px;
     }
 }
 
