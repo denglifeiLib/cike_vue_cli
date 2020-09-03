@@ -5,18 +5,29 @@
                     <button class="btn white hd" @click="showPop=true">{{popList.filter(item=>item.value===choosedVal)[0]['label']}}类型<img src="../../assets/images/sanjiao@2x.png" alt="" class="icon"></button>
                     <button class="btn white hd" @click="showCalender=true">
                         <img class="ftm rili_icon" src="static/images/rili_big@2x.png" alt="">
-                        {{date}}
+                        <span>{{date}}</span>
                         <img src="../../assets/images/sanjiao@2x.png" alt="" class="icon ft">
                     </button>
                 </div>
-                <div class="blue_card flex_box">
-                    <div class="item hd">
-                        <p class="dis">收入(元)</p>
-                        <p class="value">1520.26</p>
+                <div class="blue_card">
+                    <div class="nums flex_box">
+                        <div class="item hd">
+                            <p class="dis">今日收入(元)</p>
+                            <p class="value">1520.26</p>
+                        </div>
+                        <div class="item hd">
+                            <p class="dis">近7日收入</p>
+                            <p class="value">120</p>
+                        </div>
+                        <div class="item hd">
+                            <p class="dis">近30日收入</p>
+                            <p class="value">120</p>
+                        </div>
                     </div>
-                    <div class="item bd">
-                        <p class="dis">付款笔数</p>
-                        <p class="value">120</p>
+                    <div class="btm flex_box">
+                        <p class="dis hd">今日收入(元)</p>
+                        <span class="bd white">100</span>
+                        <button class="btn white">提现</button>
                     </div>
                 </div>
             </div>
@@ -32,7 +43,10 @@
                         <td>{{item.date}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.orderNum}}</td>
-                        <td class="red">{{item.income}}</td>
+                        <td :class="item.income >= 0 ? 'red' : 'green'">
+                            {{item.income}}
+                            <img class="right_arr" src="../../assets/images/icon_right_g@2x.png" />
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -41,7 +55,7 @@
                 title="选择类型"
                 @cancel="showPop=false">
                 <div class="shaixuan_alert">
-                    <div class="flex_box btns">
+                    <div class="flex_box btns flex_box">
                         <button v-for="(btn,j) in popList" :key="j" :class="['btn', btn.value === choosedVal?'blue':'grey']" @click="choose(btn, j)">{{btn.label}}</button>
                     </div>
                     <button class="btn block white" @click="showPop=false">取消</button>
@@ -84,7 +98,7 @@ export default {
                     date: '2020-08-01',
                     type: '私课',
                     orderNum: 4,
-                    income: 10.3
+                    income: -250.00
                 }
             ],
             popList: [
@@ -136,11 +150,12 @@ export default {
         background: #fff;
         .top{
             padding-top: 8px;
-            height: 164px;
+            // height: 164px;
             background-image: linear-gradient(to top, #DFDFDF, #EDEDED);
             .icon{
                 width: 9px;
                 margin-left: 6px;
+                margin-top: -3px;
             }
             .rili_icon{
                 width: 12px;
@@ -154,29 +169,38 @@ export default {
                 justify-content: space-around;
             }
             .blue_card{
-                height: 105px;
                 margin: 16px 16px 0;
                 background: linear-gradient(135deg, #192E9C 0%, #122587 100%);
                 border-radius: 12px 12px 0px 0px;
                 color: #fff;
+                .nums{
+                    height: 92px;
+                    justify-content: space-around;
+                }
                 .item{
-                    &:first-child{
-                        padding-left: 24px;
-                        width: 200px;
-                    }
-                    .dis{
-                        font-size: 12px;
-                        font-family: PingFangSC-Regular, PingFang SC;
-                        font-weight: 400;
-                        color: #B6BAE9;
-                    }
-                    .value{
-                        margin-top: 7px;
-                        font-size: 30px;
-                        font-family: Helvetica-Bold, Helvetica;
-                        font-weight: bold;
-                        color: #FFFFFF;
-                        line-height: 36px;
+                    text-align: center;
+                }
+                .dis{
+                    font-size: 12px;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #B6BAE9;
+                }
+                .value{
+                    margin-top: 7px;
+                    font-size: 18px;
+                    font-family: Helvetica-Bold, Helvetica;
+                    font-weight: bold;
+                    color: #FFFFFF;
+                    line-height: 36px;
+                }
+                .btm{
+                    height: 44px;
+                    padding: 0 10px;
+                    margin: 0 8px;
+                    border-top: solid 1px rgba(255, 255, 255, 0.08);;
+                    .btn{
+                        height: 27px;
                     }
                 }
             }
@@ -194,6 +218,15 @@ export default {
             td{
                 height: 49px;
                  border-top: solid 1px #F3F3F3;
+                 &.green{
+                     color: #059C2C;
+                 }
+                 .right_arr{
+                    width: 4px;
+                    margin-left: 12px;
+                    vertical-align: middle;
+                    margin-top: -3px;
+                 }
             }
             th,td{
                 text-align: center;
@@ -202,6 +235,7 @@ export default {
                 }
                 &:last-child{
                     text-align: right;
+                    font-weight: bold;
                 }
             }
         }

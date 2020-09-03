@@ -64,6 +64,14 @@ export default new Router({
             name: 'ensurance',
             component: () => import('./views/ensurance/ensurance.vue') 
         },{
+            path: '/ensurance_detail',// 用户端-今日保险-图文详情-爬虫
+            name: 'ensurance_detail',
+            component: () => import('./views/ensurance/ensuranceDetail.vue') 
+        },{
+            path: '/ensurance_all_hot',// 用户端-今日保险-更多热搜
+            name: 'ensurance_all_hot',
+            component: () => import('./views/ensurance/ensuranceAllHot.vue') 
+        },{
             path: '/private', //私课(客户端)
             name: 'private',
             component: () => import('./views/private/private.vue')
@@ -111,6 +119,10 @@ export default new Router({
             path: '/teacher_my', //教师端的我的
             name: 'teacher_my',
             component: () => import('./views/my/teacherDeMy.vue')
+        }, {
+            path: '/teacher_de_class', //教师端的我的私课
+            name: 'teacher_de_class',
+            component: () => import('./views/my/teacherDeClass.vue')
         }, {
             path: '/documents', //教师端-查看资料
             name: 'documents',

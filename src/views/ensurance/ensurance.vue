@@ -16,19 +16,19 @@
                 <p class="text_dis ft">更新时间 2020-04-08 12:23:22</p>
             </div>
             <ul class="list">
-                <li class="ellipsis"><span class="num">1</span>中美或进入新冷战？王毅表态</li>
-                <li class="ellipsis"><span class="num">2</span>特朗普长子女友金伯利演讲</li>
-                <li class="ellipsis"><span class="num">3</span>王毅会见加拿大外长</li>
-                <li class="ellipsis"><span class="num">4</span>男子1200万买房送2个车位</li>
-                <li class="ellipsis"><span class="num">5</span>男子12男子1200万买房送2个车位00万买房送2个车位</li>
+                <li class="ellipsis" @click="$router.push({name: 'ensurance_detail'})"><span class="num">1</span>中美或进入新冷战？王毅表态</li>
+                <li class="ellipsis" @click="$router.push({name: 'ensurance_detail'})"><span class="num">2</span>特朗普长子女友金伯利演讲</li>
+                <li class="ellipsis" @click="$router.push({name: 'ensurance_detail'})"><span class="num">3</span>王毅会见加拿大外长</li>
+                <li class="ellipsis" @click="$router.push({name: 'ensurance_detail'})"><span class="num">4</span>男子1200万买房送2个车位</li>
+                <li class="ellipsis" @click="$router.push({name: 'ensurance_detail'})"><span class="num">5</span>男子12男子1200万买房送2个车位00万买房送2个车位</li>
             </ul>
-            <div class="more flex_box">
+            <div class="more flex_box" @click="$router.push({name: 'ensurance_all_hot'})">
                 <span>查看更多</span><img src="../../assets/images/icon_right_g@2x.png" alt="" class="icon">
             </div>
         </div>
 
         <div class="card articalList">
-            <div class="item flex_box" v-for="(item,i) in articalList" :key="i">
+            <div class="item flex_box" v-for="(item,i) in articalList" :key="i" @click="$router.push({name: 'ensurance_detail'})">
                 <div class="bd">
                     <p class="title ellipsis2">{{item.title}}</p>
                     <div class="view_imgs" v-if="item.imgViews && item.imgViews.length">

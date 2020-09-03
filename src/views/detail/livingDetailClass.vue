@@ -107,7 +107,7 @@
                 讨论区 <span class="text_dis">共48条</span>
             </div>
             <p class="bar">全部评论</p>
-            <!-- <div class="comment_list_box">
+            <div class="comment_list_box">
                 <div class="comment_item flex_box">
                     <img src="../../assets/images/header.jpg" alt="" class="header hd">
                     <div class="bd">
@@ -132,9 +132,9 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-            <div class="empty">
+            <div class="empty" v-if="false">
                 <img src="../../assets/images/kong_pinjia@2x.png" alt="">
                 <span class="text_dis">暂无评论</span>
             </div>
