@@ -39,7 +39,7 @@
                         <th width="100">付款笔数</th>
                         <th width="100">收入（元）</th>
                     </tr>
-                    <tr v-for="(item,i) in list" :key="i">
+                    <tr v-for="(item,i) in list" :key="i"  @click="$router.push({name: 'teacher_income_detail'})">
                         <td>{{item.date}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.orderNum}}</td>

@@ -91,6 +91,14 @@ export default new Router({
             path: '/teacher', //用户端-立即预约详情
             name: 'teacher',
             component: () => import('./views/teacher/teacher.vue')
+        },{
+            path: '/teacher_view_data',// 教师端-数据查看
+            name: 'teacher_view_data',
+            component: () => import('./views/teacher/viewData.vue')
+        }, {
+            path: '/teacher_income_detail', //教师端-收入详情
+            name: 'teacher_income_detail',
+            component: () => import('./views/teacher/incomeDetail.vue')
         }, {
             path: '/my', //用户端-我的
             name: 'my',
@@ -151,10 +159,6 @@ export default new Router({
             path: '/order_detail',//订单详情 待付款|已购买|交易完成|交易关闭
             name: 'orderDetail',
             component: () => import('./views/my/orderDetail.vue')
-        },{
-            path: '/teacher_view_data',// 教师端-数据查看
-            name: 'teacher_view_data',
-            component: () => import('./views/teacher/viewData.vue')
         }, {
             path: '/teacher_detail', //用户端-老师详情
             name: 'teacher_detail',

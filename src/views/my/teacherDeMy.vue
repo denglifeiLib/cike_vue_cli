@@ -15,7 +15,7 @@
                     <img src="../../assets/images/my/icon_wdsk@2x.png" class="type_icon" alt="">
                     <p class="text_dis">我的私课</p>
                 </li>
-                <li>
+                <li @click="$router.push({name: 'teacher_view_data'})">
                     <img src="../../assets/images/my/icon_sjck@2x.png" class="type_icon" alt="">
                     <p class="text_dis">收入中心</p>
                 </li>
