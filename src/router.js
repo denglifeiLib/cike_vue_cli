@@ -100,6 +100,14 @@ export default new Router({
             name: 'teacher_income_detail',
             component: () => import('./views/teacher/incomeDetail.vue')
         }, {
+            path: '/teacher_whithdraw', //教师端-收入详情
+            name: 'teacher_whithdrawl',
+            component: () => import('./views/teacher/whithdraw.vue')
+        }, {
+            path: '/teacher_whithdraw_success', //教师端-收入详情
+            name: 'teacher_whithdraw_success',
+            component: () => import('./views/teacher/whithdrawSuccess.vue')
+        },, {
             path: '/my', //用户端-我的
             name: 'my',
             component: () => import('./views/my/my.vue')
@@ -127,6 +135,14 @@ export default new Router({
             path: '/teacher_my', //教师端的我的
             name: 'teacher_my',
             component: () => import('./views/my/teacherDeMy.vue')
+        }, {
+            path: '/teacher_learn_center', //教师端-此课 
+            name: 'teacher_learn_center',
+            component: () => import('./views/teacher/teacherLearnCenter.vue')
+        }, {
+            path: '/teacher_learn_center_detail', //教师端-此课详情 
+            name: 'teacher_learn_center_detail',
+            component: () => import('./views/teacher/teacherLearnCenterDetail.vue')
         }, {
             path: '/teacher_de_class', //教师端的我的私课
             name: 'teacher_de_class',

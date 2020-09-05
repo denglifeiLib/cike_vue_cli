@@ -27,7 +27,7 @@
                     <div class="btm flex_box">
                         <p class="dis hd">今日收入(元)</p>
                         <span class="bd white">100</span>
-                        <button class="btn white">提现</button>
+                        <button class="btn white" @click="$router.push({name: 'teacher_whithdrawl'})">提现</button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <th width="100">付款笔数</th>
                         <th width="100">收入（元）</th>
                     </tr>
-                    <tr v-for="(item,i) in list" :key="i"  @click="$router.push({name: 'teacher_income_detail'})">
+                    <tr v-for="(item,i) in list" :key="i" @click="$router.push({name: 'teacher_income_detail'})">
                         <td>{{item.date}}</td>
                         <td>{{item.type}}</td>
                         <td>{{item.orderNum}}</td>

@@ -94,6 +94,11 @@ export default {
                     icon: require('./assets/images/tab_icon4_s@2x.png'),
                     slectedIcon: require('./assets/images/tab_icon4_n@2x.png'),
                     path: '/teacher_my'
+                }, {
+                    name: '老师此课',
+                    icon: require('./assets/images/tab_icon1_s@2x.png'),
+                    slectedIcon: require('./assets/images/tab_icon1_n@2x.png'),
+                    path: '/teacher_learn_center'
                 }
             ],
 

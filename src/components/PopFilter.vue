@@ -84,7 +84,7 @@ export default {
 
 <style lang="less">
     .filter_com{
-        padding-top: 8px;
+        // padding-top: 8px;
         justify-content: space-between;
         .icon{
             width: 9px;
