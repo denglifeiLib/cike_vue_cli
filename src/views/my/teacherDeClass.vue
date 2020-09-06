@@ -77,6 +77,7 @@
         <PopWrap 
             :popupVisible="showPop" 
             title="设置私课价格"
+            :showClose="true"
             @cancel="showPop=false">
             <div class="price_alert">
                 <div class="flex_box text_dis top_dis">

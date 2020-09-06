@@ -3,7 +3,7 @@
         <img src="../../assets/images/pjcg@2x.png" alt="" class="suc_img">
         <p class="tt">评价成功</p>
         <div class="text_dis">感谢你对老师的支持</div>
-        <button class="btn plain_white block">返回我的订单</button>
+        <button class="btn plain_white block" @click="$router.push({name: 'orders'})">返回我的订单</button>
     </div>
 </template>
 

@@ -36,7 +36,7 @@
                     <button class="btn plain_grey ft" v-if="item.status==='1'">重新购买</button>
                     <button class="btn plain_red ft" v-if="item.status==='2'">进入教室</button>
                     <button class="btn plain_grey ft" v-if="item.status==='3'">查看回放</button>
-                    <button class="btn plain_grey ft" v-if="item.status==='3'">评价</button>
+                    <button class="btn plain_grey ft" v-if="item.status==='3'" @click="$router.push({name: 'comment_make'})">评价</button>
                 </div>
             </div>
 

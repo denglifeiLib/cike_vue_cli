@@ -2,7 +2,7 @@
     <div class="page_wrap private_teacher_page">
         <div class="top_tip flex_box">
             <p class="bd">单节私课时长15min，请合理安排授课时间！</p>
-            <button class="btn white ft">我的私课</button>
+            <button class="btn white ft" @click="$router.push({name: 'teacher_de_class', query:{activeTab: 0}})">我的私课</button>
         </div>
         <pop-calender 
             v-model="ActiveDay" 

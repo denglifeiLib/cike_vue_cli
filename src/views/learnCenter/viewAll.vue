@@ -117,26 +117,53 @@ export default {
             multiFilterItems: [
                 {
                     title: '状态',
-                    name: 'classType',
                     list: [
                         {
                             label: '全部',
                             value: '',
+                            checked: true
                         }, {
-                            label: '课程',
+                            label: '正在直播',
                             value: '11'
                         }, {
-                            label: '直播',
+                            label: '未开播',
                             value: '12'
+                        }, {
+                            label: '已结束',
+                            value: '13'
+                        }
+                    ]
+                }, {
+                    title: '类目',
+                    list: [
+                        {
+                            label: '全部',
+                            value: '',
+                            checked: true
+                        }, {
+                            label: '类目1',
+                            value: '21'
+                        }, {
+                            label: '类目2',
+                            value: '22'
+                        }, {
+                            label: '类目3',
+                            value: '23'
+                        }, {
+                            label: '类目4',
+                            value: '24'
+                        }, {
+                            label: '类目5',
+                            value: '25'
                         }
                     ]
                 }, {
                     title: '价格',
-                    name: 'price',
                     list: [
                         {
                             label: '全部',
                             value: '',
+                            checked: true
                         }, {
                             label: '免费',
                             value: '31'

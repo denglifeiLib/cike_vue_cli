@@ -51,7 +51,7 @@
 
             <div class="taolun_bar" @click="showTaolun=true"> 
                 <div class="flex_box taolun">
-                    <img src="" alt="" class="msg_icon hd">
+                    <img src="../../assets/images/tlq_icon.png" alt="" class="msg_icon hd">
                     <div class="bd">讨论区</div>
                     <div class="headers ft">
                         <img src="../../assets/images/default1.jpg" alt="" class="header hd">
@@ -412,7 +412,6 @@ export default {
             margin-right: 6px;
             width: 14px;
             height: 14px;
-            background: orange;
         }
    }
 

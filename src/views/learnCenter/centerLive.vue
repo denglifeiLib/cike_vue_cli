@@ -1,7 +1,11 @@
 <template>
-    <div>
+    <div class="center_live_page">
         <div class="main">
-            <filterCom :popLeimuList="popLeimuList" v-model="filter"></filterCom>
+            <!-- <filterCom :popLeimuList="popLeimuList" v-model="filter"></filterCom> -->
+            <div class="flex_box justify filter_top">
+                <pop-filter v-model="rangeTypeFilter" :items="rangeTypeItems" name="选择排序" title="选择排序"></pop-filter>
+                <pop-filter v-model="multiFilter" :items="multiFilterItems" name="筛选" title="选择排序"></pop-filter>
+            </div>
 
 
             <!-- 思维导图 -->
@@ -101,14 +105,39 @@
 </template>
 
 <script>
-import filterCom from './components/filterCom';
+// import filterCom from './components/filterCom';
+import PopFilter from '@/components/PopFilter';
 import * as Axios from '@/utils/Action';
 export default {
     name: 'test',
     data() {
         return {
-            filter: 'zonghe',
-            popLeimuList: [
+            rangeTypeFilter: {
+                rangeType: ''
+            },
+            multiFilter: {
+                classType: '',
+                price: ''
+            },
+            rangeTypeItems: [
+                {
+                    title: '',
+                    name: 'rangeType',
+                    list: [
+                        {
+                            label: '综合排序',
+                            value: '21'
+                        }, {
+                            label: '最新排序',
+                            value: '22'
+                        }, {
+                            label: '最热排序',
+                            value: '23'
+                        }
+                    ]
+                }
+            ],
+            multiFilterItems: [
                 {
                     title: '状态',
                     list: [
@@ -265,11 +294,15 @@ export default {
     methods: {
        
     },
-    components: {filterCom}
+    components: {PopFilter}
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
+.center_live_page{
+    .filter_top{
+        .filter_com .btn{width: 165px;}
+    }
     .main{
         // padding: 4px 16px;
         .card{
@@ -450,4 +483,5 @@ export default {
             }
         }
     }
+}
 </style>

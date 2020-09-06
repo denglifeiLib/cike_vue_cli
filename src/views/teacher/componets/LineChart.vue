@@ -164,6 +164,9 @@
 
     .choose_box{
         padding: 24px 16px;
+        .btn.plain_grey{
+          color: #121732;
+        }
     }
 }
 </style>

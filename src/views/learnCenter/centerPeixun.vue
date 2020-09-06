@@ -11,7 +11,7 @@
                     <span class="ft">换一批</span>
                 </div>
                 <div class="peixunInList flex_box">
-                    <div class="item" v-for="(item,i) in liyiList" :key="i">
+                    <div class="item" v-for="(item,i) in liyiList" :key="i" @click="$router.push({name: 'living_detail_class'})">
                         <div class="image_hover">
                             <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                             <div class="score_label hover rightBottom">
@@ -32,7 +32,7 @@
                 </div>
                 <img src="../../assets/images/cike/banner_zhiye@2x.png" alt="" class="banner">
                 <div class="reviewList flex_box">
-                    <div class="item" v-for="(item,i) in guihuaList" :key="i">
+                    <div class="item" v-for="(item,i) in guihuaList" :key="i" @click="$router.push({name: 'living_detail_class'})">
                         <div class="image_hover">
                             <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                             <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
@@ -62,7 +62,7 @@
                     <span class="ft">换一批</span>
                 </div>
                 <div class="reviewList flex_box">
-                    <div class="item" v-for="(item,i) in qiuzhiList" :key="i">
+                    <div class="item" v-for="(item,i) in qiuzhiList" :key="i" @click="$router.push({name: 'living_detail_class'})">
                         <div class="image_hover">
                             <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                             <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
@@ -93,7 +93,7 @@
                     <span class="ft">换一批</span>
                 </div>
                 <div class="topList flex_box">
-                    <div class="item" v-for="(item,i) in renzhiList" :key="i">
+                    <div class="item" v-for="(item,i) in renzhiList" :key="i" @click="$router.push({name: 'living_detail_class'})">
                         <div class="image_hover">
                             <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                             <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
@@ -125,7 +125,7 @@
                     <img src="../../assets/images/icon_right_g@2x.png" alt="" class="ft icon_right">
                 </div>
                 <div class="guessList">
-                    <div class="item flex_box" v-for="(item,i) in siweiList" :key="i">
+                    <div class="item flex_box" v-for="(item,i) in siweiList" :key="i" @click="$router.push({name: 'living_detail_class'})">
                         <div class="image_hover">
                             <img :src="item.poster || require('../../assets/images/default1.jpg')" alt="" class="bg poster">
                             <img src="../../assets/images/jiiaobiaoheji@2x.png" alt="" class="hover topLeft" v-if="item.isCombine">
