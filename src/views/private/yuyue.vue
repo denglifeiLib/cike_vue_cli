@@ -15,7 +15,9 @@
             endDay="2020-09-22" 
             :hasValDay="['2020-08-23', '2020-08-24', '2020-08-28']">
         </pop-calender>
+        <button @click="$refs.week.initSroll()">点击初始化week组件滚动位置用</button>
         <weeks 
+            ref="week"
             v-model="ActiveDay" 
             value="2020-08-22" 
             endDay="2020-09-22" 
@@ -38,7 +40,7 @@
             </div>
             <div class="agreement flex_box">
                 <myRadio class="hd" v-model="isAgree"></myRadio>
-                <p class="bd agree">同意服务规则及协议</p>
+                <p class="bd agree" @click="$router.push({name: 'out_page'})">同意服务规则及协议</p>
                 <button class="btn red" @click="goYuyue()">
                     <span>提交订单</span>
                     <img src="../../assets/images/icon_right_w@2x.png" alt="" class="right_arr ft">

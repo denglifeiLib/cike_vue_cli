@@ -95,7 +95,8 @@ export default {
             padding: 22px 28px 0 32px;
             height: 135px;
             color: #fff;
-            background: blue;
+            background: url('static/images/my_bg.png');
+            background-size: 100% 100%;
             align-items: flex-start;
             .name{
                 padding-top: 8px;

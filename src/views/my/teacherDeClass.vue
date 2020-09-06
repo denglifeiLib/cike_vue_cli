@@ -28,7 +28,8 @@
                         <div class="flex_box img_info">
                             <img :src="item.header" alt="" class="header">
                             <p class="name">{{item.teacher}} 老师</p>
-                            <span class="text_dis">|<span class="pl10">共 30分钟</span></span>
+                            <span class="text_dis">|</span>
+                            <span class="text_dis pl10">共 30分钟</span>
                         </div>
                     </div>
                     <div class="ft" :class="{hasNewDoc: item.hasNewDoc}" @click="$router.push('documents')">
@@ -54,7 +55,8 @@
                         <div class="flex_box img_info">
                             <img :src="item.header" alt="" class="header">
                             <p class="name">{{item.teacher}} 老师</p>
-                            <span class="text_dis">|<span class="pl10">共 30分钟</span></span>
+                            <span class="text_dis">|</span>
+                            <span class="text_dis pl10">共 30分钟</span>
                         </div>
                         <div class="" v-if="item.score || item.comment">
                             <div class="score_box">

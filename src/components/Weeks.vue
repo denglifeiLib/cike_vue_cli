@@ -67,6 +67,9 @@ export default({
         choose(item) {
             console.log('week_com', item.value)
             this.$emit('input', item.value)
+        },
+        initSroll() {
+            document.querySelector('.weeks_sroll').scrollTo(0,0)
         }
     }
 })

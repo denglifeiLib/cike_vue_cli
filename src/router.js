@@ -218,6 +218,10 @@ export default new Router({
             path: '/error_load_page',// 用户端-加载失败
             name: 'error_load_page',
             component: () => import('./views/errorLoadPage.vue'),
+        }, {
+            path: '/out_page',// iframe页面
+            name: 'out_page',
+            component: () => import('./views/outPage.vue'),
         }
 
         

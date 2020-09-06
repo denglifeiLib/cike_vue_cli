@@ -1,7 +1,13 @@
 <template>
-    <div>
+    <div class="view_all_page">
         <div class="main">
-            <filterCom :popLeimuList="popLeimuList" v-model="filter"></filterCom>
+            <!-- <filterCom :popLeimuList="popLeimuList" v-model="filter"></filterCom> -->
+
+            <div class="flex_box justify filter_top">
+                <pop-filter v-model="rangeTypeFilter" :items="rangeTypeItems" name="选择排序" title="选择排序"></pop-filter>
+                <pop-filter v-model="multiFilter" :items="multiFilterItems" name="筛选" title="选择排序"></pop-filter>
+            </div>
+
             <div class="card guess_card">
                 <div class="guessList">
                     <div class="item flex_box" v-for="(item,i) in guessList" :key="i">
@@ -35,12 +41,19 @@
 
 <script>
 import * as Axios from '@/utils/Action';
-import filterCom from './components/filterCom';
+// import filterCom from './components/filterCom';
+import PopFilter from '@/components/PopFilter';
 export default {
     name: 'test',
     data() {
-        return {
-            filter: 'zonghe',
+        return { 
+            rangeTypeFilter: {
+                rangeType: ''
+            },
+            multiFilter: {
+                classType: '',
+                price: ''
+            },
             guessList: [
                 {
                     poster: require('../../assets/images/header.jpg'),
@@ -83,56 +96,47 @@ export default {
                     originPrice: 430.23
                 }
             ],
-            popLeimuList: [
+            rangeTypeItems: [
                 {
-                    title: '状态',
+                    title: '',
+                    name: 'rangeType',
                     list: [
                         {
-                            label: '全部',
-                            value: '',
-                            checked: true
-                        }, {
-                            label: '正在直播',
-                            value: '11'
-                        }, {
-                            label: '未开播',
-                            value: '12'
-                        }, {
-                            label: '已结束',
-                            value: '13'
-                        }
-                    ]
-                }, {
-                    title: '类目',
-                    list: [
-                        {
-                            label: '全部',
-                            value: '',
-                            checked: true
-                        }, {
-                            label: '类目1',
+                            label: '综合排序',
                             value: '21'
                         }, {
-                            label: '类目2',
+                            label: '最新排序',
                             value: '22'
                         }, {
-                            label: '类目3',
+                            label: '最热排序',
                             value: '23'
+                        }
+                    ]
+                }
+            ],
+            multiFilterItems: [
+                {
+                    title: '状态',
+                    name: 'classType',
+                    list: [
+                        {
+                            label: '全部',
+                            value: '',
                         }, {
-                            label: '类目4',
-                            value: '24'
+                            label: '课程',
+                            value: '11'
                         }, {
-                            label: '类目5',
-                            value: '25'
+                            label: '直播',
+                            value: '12'
                         }
                     ]
                 }, {
                     title: '价格',
+                    name: 'price',
                     list: [
                         {
                             label: '全部',
                             value: '',
-                            checked: true
                         }, {
                             label: '免费',
                             value: '31'
@@ -151,7 +155,7 @@ export default {
                         }
                     ]
                 }
-            ]
+            ],
         }
     },
     created() {
@@ -168,14 +172,18 @@ export default {
     methods: {
        
     },
-    components: {filterCom}
+    components: {PopFilter}
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.view_all_page{
     .main{
         padding: 4px 16px;
 
+        .filter_top{
+            .filter_com .btn{width: 165px;}
+        }
         
         .card{
             padding: 12px 16px;
@@ -426,4 +434,6 @@ export default {
             }
         }
     }
+}
+    
 </style>
